@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive</title>
+</head>
+<style>
+    html, body{
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        margin: 0;
+    }
+    .sky, .grass, .road{
+        position: relative;
+    }
+    .sky{
+        height: 40%;
+        background: skyblue;
+    }
+    .grass{
+        height: 30%;
+        background: darkgreen;
+    }
+    .road{
+        height: 30%;
+        background: darkslategray;
+        box-sizing: border-box;
+        border-top: 10px solid gray;
+        border-bottom: 10px solid gray;
+    }
+    .lines{
+        box-sizing: border-box;
+        border: 4px dashed white;
+        width: 100%;
+        position: absolute;
+        top: 45%;
+    }
+    .car{
+        position: absolute;
+        left: 0;
+        top: -0px;
+        animation: drive 3s both infinite linear, 
+            jump 0.3s 1.2s ease;
+        /*To make the image stay at the end when it drives
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;*/
+    }
+    .move{
+            position: absolute;
+            top: 120px;
+            left: 0;
+            animation-name: drive;
+            animation-duration: 5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;  
+            animation-timing-function: linear;
+        }
+        .cloud{
+            position: absolute;
+            left: 50px;
+        }
+        .cloud:nth-child(1){
+            width: 200px;
+            top: 120px;
+            opacity: 0.5;
+            animation: wind 40s linear infinite reverse;
+        }
+        .cloud:nth-child(2){
+            width: 300px;
+            top: 0;
+            animation: wind 30s linear infinite reverse;
+        }
+    @keyframes drive {
+        from{ transform: translateX(-200)}
+        to{ transform: translateX(1700px)}
+    } 
+    @keyframes wind{
+        from{ transform: translateX(-20)}
+        to{ transform: translateX(1500px)}
+    }
+    @keyframes jump{
+        0%{top: -40px}
+        50%{top: -100px}
+        100%{top: -40px}
+    }
+</style>
+<body>
+    <div class="sky">
+    <img class="cloud" src="img/cloud2.png">
+    <img class="cloud" src="img/cloud2.png">
+    </div>
+    <div class="grass"></div>
+    <div class="road">
+        <div class="lines"></div>
+        <img src="img/car3.png" width="200px" class="car">
+        <img src="img/car3.png" width="200px" class="move">
+    </div>
+    
+</body>
+</html>
